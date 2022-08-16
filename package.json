@@ -1,0 +1,16 @@
+{
+  "name": "ihatecryptocoin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/app.js",
+  "scripts": {
+    "build": "./build.sh",
+    "start": "cd backend && npm run start",
+    "frontend-dev": "cd frontend && npm run serve",
+    "backend-dev": "cd backend && npm run serve",
+    "dev": "concurrently --kill-others \"npm run backend-dev\" \"npm run frontend-dev\""
+  },
+  "dependencies": {
+    "concurrently": "^7.2.1"
+  }
+}
