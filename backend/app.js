@@ -41,6 +41,7 @@ async function startUpContainers() {
     let enterNameSpace = await execShPromise("sudo enter-systemd-namespace", true);
 
     let containerIPAddress = await execShPromise("microk8s kubectl get service/microk8sdemo -o jsonpath='{.spec.clusterIP}'", true);
+    let scaleCommand = await execShPromise("microk8s kubectl scale --replicas=" + 1 + " deployment/microk8sdemo", true);
 
     endpointIP = containerIPAddress.stdout.replace(/[\n\r]+/g, '');
 
@@ -131,15 +132,19 @@ async function getServers(inData) {
     let podsInfoListShOut = await execShPromise("microk8s kubectl get pod -o wide | grep -i microk8sdemo ", true);
     let podsInfoList = podsInfoListShOut.stdout;
 
-    let podsInfoArray = podsInfoList.replace(/[\n\r]+/g, ',').split(',');
+    let podsInfoArray = podsInfoList.replace(/[\n\r]+/g, ';').split(';');
     podsInfoArray.splice(podsInfoArray.length - 1, 1);
 
     let returnPodInfoArray = [];
 
     for (let i = 0; i < podsInfoArray.length; i++) {
       let podInfoVisitor = podsInfoArray[i];
-      let podInfo = podInfoVisitor.replace(/[ ]+/g, ',').split(',');
+      let podInfo = podInfoVisitor.replace(/[ ]+/g, ';').split(';');
+      if (podInfo.length == 9) {
       returnPodInfoArray.push({ status: podInfo[2], ip: podInfo[5] })
+      } else {
+      returnPodInfoArray.push({ status: podInfo[2], ip: podInfo[7] })
+      }
     }
     return JSON.stringify({ function: "refreshserverinforeturn", data: { servers: returnPodInfoArray } })
   } catch (error) {

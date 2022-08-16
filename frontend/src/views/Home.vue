@@ -15,9 +15,9 @@
     </div>
 
     <h3>Servers</h3>
-    <ul>
+    <div>
       <li v-for="(server, serverIndex) in servers" v-bind:key="serverIndex">{{ server }}</li>
-    </ul>
+    </div>
 
     <h3>Clients</h3>
     <ul>
@@ -65,7 +65,7 @@ export default {
       let clientList = Object.keys(this.clientDictionary);
       for (let i = 0; i < clientList.length; i++) {
         let clientVisitor = this.clientDictionary[clientList[i]];
-        if (clientVisitor.status == "done") {
+        if (clientVisitor.status == "done" || clientVisitor.status == "left") {
           delete this.clientDictionary[clientVisitor.id]
         }
       }
