@@ -37,9 +37,6 @@ async function startUpContainers() {
   try {
     // TODO: Add check if container already exists
 
-    // This part is only necessary for in WSL
-    let enterNameSpace = await execShPromise("sudo enter-systemd-namespace", true);
-
     let containerIPAddress = await execShPromise("microk8s kubectl get service/microk8sdemo -o jsonpath='{.spec.clusterIP}'", true);
     let scaleCommand = await execShPromise("microk8s kubectl scale --replicas=" + 1 + " deployment/microk8sdemo", true);
 
