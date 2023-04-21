@@ -8,7 +8,7 @@
 - https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/
 
 #### Install the npm packages
-- Run `npm install` in the main folder, the frontend folder, the backend folder, and the server-backend folder
+- Install npm packages: `npm install && cd frontend && npm install && cd ../backend && npm install && cd ..`
 
 #### Install microk8s
 - Instructions here: https://microk8s.io/docs/getting-started
