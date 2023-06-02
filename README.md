@@ -39,20 +39,21 @@ Run this to change servers to 8: `microk8s kubectl scale --replicas=8 deployment
 
 ## Full list of commands to run to get started
 
-•	git clone https://github.com/craigloewen-msft/microk8sdemo.git
-•	cd microk8sdemo
-•	curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-•	source ~/.bashrc
-•	nvm install 16
-•	nvm use 16
-•	npm install && cd frontend && npm install && cd ../backend && npm install && cd ..
-•	sudo snap install microk8s --classic --channel=1.27
-•	sudo usermod -a -G microk8s $USER
-•	Close and reload WSL window
-•	curl -fsSL https://get.docker.com -o get-docker.sh
-•	sudo sh get-docker.sh
-•	sudo docker run -d -p 32000:5000 --restart=always --name registry registry:2
-•	cd ./server-backend && sudo docker build . -t localhost:32000/microk8sdemo:latest && cd ..
-•	sudo docker push localhost:32000/microk8sdemo:latest
-•	microk8s kubectl apply -f ./kubedeploy
-•	npm run dev
+- git clone https://github.com/craigloewen-msft/microk8sdemo.git
+- cd microk8sdemo
+- curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+- source ~/.bashrc
+- nvm install 16
+- nvm use 16
+- npm install && cd frontend && npm install && cd ../backend && npm install && cd ..
+- sudo snap install microk8s --classic --channel=1.27
+- sudo usermod -a -G microk8s $USER
+- Close and reload WSL window
+- curl -fsSL https://get.docker.com -o get-docker.sh
+- sudo sh get-docker.sh
+- sudo docker run -d -p 32000:5000 --restart=always --name registry registry:2
+- cd ./server-backend && sudo docker build . -t localhost:32000/microk8sdemo:latest && cd ..
+- sudo docker push localhost:32000/microk8sdemo:latest
+- microk8s kubectl apply -f ./kubedeploy
+- npm run dev
+
